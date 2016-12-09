@@ -65,3 +65,5 @@ group :test do
   gem 'factory_girl_rails'
   gem 'simplecov'
 end
+
+gem 'bootstrap-sass'
