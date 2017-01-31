@@ -13,8 +13,8 @@
   <body>
     <div class="container">
       <ul class="nav nav-tabs">
-        <li><%= link_to "Pocket", welcome_index_path %></li>
-        <li><%= link_to "Pants", welcome_about_path %></li>
+        <li><%= link_to "Pocket", root_path %></li>
+        <li><%= link_to "Pants", about_path %></li>
      <div class="pull-right user-info">
        <% if user_signed_in? %>
          Signed in as: <strong><%= current_user.email %></strong> |
@@ -24,7 +24,7 @@
          <%= link_to "Sign Up", new_user_registration_path, :class => 'navbar-link'  %> -
          <%= link_to "Sign In", new_user_session_path, :class => 'navbar-link'  %>
        <% end %>
-    </div>   
+    </div>
    </ul>
    <div class="container">
      <%= yield %>
