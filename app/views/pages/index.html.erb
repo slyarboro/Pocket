@@ -1,0 +1,73 @@
+<h1>Paige; control her.</h1>
+
+<!-- erb tags: text change every time it's run -->
+
+<!--
+<%= @pages.first.title %>
+@pages = instance variable set up in pages_controller
+.first = to access the first object in that collection
+.title = to get the title attribute from that first page object
+
+evaluates ruby code it contains and embeds results in the finished text (output embedding tags)
+-->
+
+<!--
+<%  %>
+used for **conditionals and ~loops
+
+evaluates ruby code without inserting results in the finished text (regular embedding tags)
+-->
+
+<!-- **conditionals //
+<% grade = 55 %>
+<% if grade > 60 %>
+    Congratulations on your passing grade! You smart.
+<% end %>
+
+erb text within conditional statement will only be printed if condition is true (congrats printed only if grade > 60)
+-->
+
+<!-- ~loops //
+<% 4.times do %>
+  <p>Embed Reg Loops, sans eq</p>
+<% end %>
+
+<% 4.times do |index| %>
+  <p><%= index %> Embed Reg Loops, sans eq</p>
+<% end %>
+-->
+
+<!-- .each method (do, end) //
+<% @pages.each do |page| %>
+  <p><%= page.title %></p>
+<% end %>
+-->
+
+<!-- link_to method //
+(link text is title/topic displayed)
+(/link/path requested destination that link references)
+<% @pages.each do |page| %>
+  <p><%= link_to "link text", "/link/path" %></p>
+<% end %>
+-->
+
+<!-- Path A
+# <% @pages.each do |page| %>
+#   <p><%= link_to page.title, "/pages/#{page.id}" %></p>
+# <% end %> -->
+
+<!-- Path B
+# <% @pages.each do |page| %>
+#   <p><%= link_to page.title, page_path(page) %></p>
+# <% end %> -->
+
+<!-- Path C -->
+<% @pages.each do |page| %>
+  <p><%= link_to page.title, page %></p>
+<% end %>
+
+<!-- Paths A, B, C: identical results
+Same code except /link/path simplified using routes.rb (as: )
+-->
+
+<%= link_to 'New Page', new_page_path %>
