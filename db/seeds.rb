@@ -1,27 +1,22 @@
 # Seeding random for practice before making the lorem ipsum
-require 'random_data'
+require 'faker'
 
  # Create Topics
- 50.times do
- # #1
+ 15.times do
    Topic.create!(
- # #2
-     title:  RandomData.random_sentence,
-     body:   RandomData.random_paragraph
+     title:  Faker::90s.sentence
    )
  end
- topics = Topic.all
 
- # Create Comments
- # #3
- # 100.times do
- #   Comment.create!(
- # # #4
- #     topic: topics.sample,
- #     body: RandomData.random_paragraph
- #   )
- # end
+ # Create Bookmarks
+ topics = Topic.all
+ 30.times do
+   Bookmark.create!(
+   url: Faker::Internet.url
+   topics: topics.sample
+   )
+ end
 
  puts "Seed finished"
  puts "#{Topic.count} topics created"
- # puts "#{Comment.count} comments created"
+ puts "#{Bookmark.count} bookmarks created"

@@ -1,4 +1,4 @@
-require_relative 'boot'
+require File.expand_path('../boot', __FILE__)
 
 require "rails"
 # Pick the frameworks you want:
@@ -19,5 +19,8 @@ Bundler.require(*Rails.groups)
 module Pocket
   class Application < Rails::Application
 
+
+    config.active_record.raise_in_transactional_callbacks = true
+    config.autoload_paths << File.join(config.root, "lib")
   end
 end

@@ -1,10 +1,13 @@
 class TopicsController < ApplicationController
+
   def index
     @topics = Topic.all
+    # @topic = Topic.new
   end
 
   def show
     @topic = Topic.find(params[:id])
+    # @bookmark = Bookmark.new
   end
 
   def new
@@ -12,15 +15,14 @@ class TopicsController < ApplicationController
   end
 
   def create
-    @topic = Topic.new
-    @topic.name = params[:topic][:name]
-    @topic.description = params[:topic][:description]
-    @topic.public = params[:topic][:public]
+    @user = current_user
+    @topic = @user.topics.new(topic_params)
 
     if @topic.save
-      redirect_to :topic, notice: "Success! Topic has been saved."
+      flash[:notice] = "Success! Your topic has been created."
+      redirect_to @topic
     else
-      flash.now[:alert] = "[ERROR] Request has failed. Please try again."
+      flash.now[:error] = "Oh snap, your request has failed. Please try again!"
       render :new
     end
   end
@@ -31,27 +33,33 @@ class TopicsController < ApplicationController
 
   def update
     @topic = Topic.find(params[:id])
-    @topic.name = params[:topic][:name]
-    @topic.description = params[:topic][:description]
-    @topic.public = params[:topic][:public]
+    @topic.update_attributes(topic_params)
 
     if @topic.save
-      flash[:notice] = "Success! Topic has been updated."
+      flash[:notice] = "Money! Pocket change complete."
+      redirect_to @topic
     else
-      flash.now[:alert] = "[ERROR] Topic has not been saved. Please submit request again."
-      render :new
+      flash.now[:error] = "There was an error saving your changes. Please resubmit your request."
+      render :edit
     end
   end
 
   def destroy
     @topic = Topic.find(params[:id])
+    title = @topic.title
 
     if @topic.destroy
-      flash[:notice] = "\"#{@topic.name}\" has been deleted."
-      redirect_to action: :index
+      flash[:notice] = "\"#{@topic.title}\", who? This topic has been deleted."
+      redirect_to topics_path
     else
-      flash.now[:alert] = "[ERROR] Topic has not been deleted. Please submit request again."
+      flash.now[:error] = "Process incomplete. To delete this topic, please resubmit your request. Change"
       render :show
     end
+  end
+
+  private
+
+  def topic_params
+    params.require(:topic).permit(:title)
   end
 end

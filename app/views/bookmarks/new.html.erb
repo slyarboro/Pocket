@@ -1,2 +1,21 @@
-<h1>Bookmarks#new</h1>
-<p>Find me in app/views/bookmarks/new.html.erb</p>
+<h1>New Bookmark</h1>
+
+<div class="row">
+  <div class="col-md-4">
+    <h2>Save UR Link in a zip!</h2>
+    <!-- <ul>
+      <li>No inappropriate content allowed.</li>
+      <li>Have fun!</li>
+    </ul> -->
+  </div>
+  <div class="col-md-8">
+    <%= form_for [@topic, @bookmark] do |f| %>
+    <div class="form-group">
+      <%= f.label :url %>
+      <%= f.text_field :url, class: 'form-control', placeholder: "Enter the URL" %>
+    </div>
+    <%= f.submit "Save", class: 'btn btn-success' %>
+    <%= link_to "Back", topic_path(@topic), class: "btn btn-primary" %>
+     <% end %>
+   </div>
+ </div>

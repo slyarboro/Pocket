@@ -2,41 +2,21 @@
 
  <div class="row">
    <div class="col-md-4">
-     <!-- <p>Guidelines for topics:</p>
+     <p>Rocket guys for your Pocket size.</p>
      <ul>
-       <li>Make sure the topic is appropriate.</li>
-       <li>Never insult dogs.</li>
-       <li>Smile when you type.</li>
-     </ul> -->
+       <li>Eugene Shoemaker.</li>
+       <li>Gene Kranz.</li>
+       <li>Gene Cernan.</li>
+     </ul>
    </div>
    <div class="col-md-8">
      <%= form_for @topic do |f| %>
        <div class="form-group">
-         <%= f.label :name %>
-         <%= f.text_field :name, class: 'form-control', placeholder: "Enter topic name" %>
-       </div>
-       <!-- <div class="form-group">
-
-         <%= f.label :description %>
-         <%= f.text_area :description, rows: 8, class: 'form-control', placeholder: "Enter topic description" %>
-       </div>
-       <div class="form-group">
-         <%= f.label :public, class: 'checkbox' do %>
-           <%= f.check_box :public %> Public topic
-         <% end %>
-       </div> -->
+         <%= f.label :title %>
+         <%= f.text_field :title, class: 'form-control', placeholder: "Enter title of new topic" %>
+<br>
        <%= f.submit "Save", class: 'btn btn-success' %>
+       <%= link_to "Back", topics_path, class: "btn btn-primary" %>
      <% end %>
    </div>
  </div>
-
-
- <!-- <%= form_for @topic do |f| %>
-   <%= f.label :title %>
-   <%= f.text_field :title %>
-
-   <%= f.label :body %>
-   <%= f.text_area :body %>
-
-   <%= f.submit "Save" %>
- <% end %> -->
