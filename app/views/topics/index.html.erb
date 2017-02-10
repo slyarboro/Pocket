@@ -1,24 +1,21 @@
-<!-- <div class="panel-body">
-  <div class="box panel panel-default">
-     -->
+<div class="panel-body">
+  <!-- <div class="box panel panel-default"> -->
+
     <h1>Topics</h1>
     <p>Topic like it's hot.</p>
   <!-- </div></div> -->
-  <!-- <%= link_to "Create New Topic", new_topic_path, class: "btn btn-success" %>
+  <%= link_to "Create New Topic", new_topic_path, class: "btn btn-success" %>
   <br>
   <div class="row">
-    <div class="col-md-8"> -->
+    <div class="col-md-8">
       <% @topics.each do |topic| %>
       <div class="media">
         <div class="media-body">
           <h4 class="media-heading">
-            <%= link_to topic.title, topic %> |
+            <%= link_to topic.title, topic %>
           </h4>
-          <small>
             <%= link_to "Delete Topic", topic, method: :delete, data: { confirm: 'Are you sure you want to delete this topic?'} %>
-          </small>
-          <!-- <ul>
-            <li><%= topic.bookmarks.all %></li> -->
+          <ul>
 
           <% topic.bookmarks.each do |link| %>
           <ul>
@@ -32,8 +29,5 @@
         </div>
       </div>
       <% end %>
-    </div>
-    <div class="col-md-4">
-      <%= link_to "Create New Topic", new_topic_path, class: "btn btn-success" %>
     </div>
   </div>
