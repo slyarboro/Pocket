@@ -1,9 +1,8 @@
 class BookmarksController < ApplicationController
-  before_action :authenticate_user!
 
   def show
-    # @topic = Topic.find(params[:topic_id])
     # @bookmark = Bookmark.find(params[:id])
+    @bookmark = @topic.bookmarks.find(params[:id])
   end
 
   def new
@@ -12,50 +11,50 @@ class BookmarksController < ApplicationController
   end
 
   def create
-    # @topic = Topic.find(params[:topic_id])
-    # @bookmark = Bookmark.new(params.require(:bookmark).permit(:url))
-
-    # @bookmark = @topic.bookmarks.create(bookmark_params)
+    @bookmark = Bookmark.new(bookmark_params)
+    # @bookmark = Bookmark.new
+    # @bookmark = @topic.bookmarks.new(bookmark_params)
     @bookmark.topic = @topic
 
     if @bookmark.save
       flash[:notice] = "Your new bookmark has been created!"
-      redirect_to @bookmark.topic
+      redirect_to @topic
     else
-      flash[:error] = "There was trouble saving this bookmark."
+      flash.now[:error] = "Pocket was unable to save new bookmark. Please try again."
       render :new
     end
   end
 
   def edit
-    @topic = Topic.find(params[:topic_id])
+    # @topic = Topic.find(params[:topic_id])
     @bookmark = Bookmark.find(params[:id])
   end
 
   def update
-    @topic = Topic.find(params[:topic_id])
+    # @topic = Topic.find(params[:topic_id])
     @bookmark = Bookmark.find(params[:id])
+    @bookmark.assign_attributes(bookmark_params)
 
-    if @bookmark.update_attributes(params.require(:bookmark).permit(:url))
+    if @bookmark.save
       flash[:notice] = "Bookmark changes have been saved."
-      redirect_to [@topic, @bookmark]
+      redirect_to @bookmark.topic
     else
-      flash[:error] = "Pocket was unable to save these changes to your bookmark."
+      flash.now[:error] = "Pocket was unable to save these changes to your bookmark."
       render :edit
     end
   end
 
   def destroy
-    @topic = Topic.find(params[:topic_id])
+    # @topic = Topic.find(params[:topic_id])
     @bookmark = Bookmark.find(params[:id])
-    @bookmark_url = @bookmark.url
+    # @bookmark_url = @bookmark.url
 
     if @bookmark.destroy
-      flash[:notice] = "#{@bookmark_url} has been deleted."
-      # redirect_to topic_path(@topic)
-      redirect_to @topic
+      flash[:notice] = "\"#{@bookmark.url}\" has been deleted."
+      redirect_to topics_path
+      # redirect_to @topic
     else
-      flash[:error] = "Error: This bookmark has not been deleted."
+      flash.now[:error] = "Error: This bookmark has not been deleted."
       render :show
     end
   end
@@ -66,5 +65,4 @@ class BookmarksController < ApplicationController
   def bookmark_params
     params.require(:bookmark).permit(:url)
   end
-
 end

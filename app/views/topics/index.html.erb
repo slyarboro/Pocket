@@ -1,33 +1,16 @@
 <div class="panel-body">
   <!-- <div class="box panel panel-default"> -->
-
-    <h1>Topics</h1>
-    <p>Topic like it's hot.</p>
+  <h1>Topics</h1>
+  <h4>Topic like it's hot.</h4>
   <!-- </div></div> -->
-  <%= link_to "Create New Topic", new_topic_path, class: "btn btn-success" %>
   <br>
-  <div class="row">
-    <div class="col-md-8">
-      <% @topics.each do |topic| %>
-      <div class="media">
-        <div class="media-body">
-          <h4 class="media-heading">
-            <%= link_to topic.title, topic %>
-          </h4>
-            <%= link_to "Delete Topic", topic, method: :delete, data: { confirm: 'Are you sure you want to delete this topic?'} %>
-          <ul>
-
-          <% topic.bookmarks.each do |link| %>
-          <ul>
-            <li class="thumbnail">
-              <%= link_to link.url, topic_bookmark_path(link.topic, link) %>
-            </li>
-          </ul>
-          <% end %>
-
-          </ul>
-        </div>
-      </div>
-      <% end %>
+  <div class="col-md-8">
+    <% @topics.each do |topic| %>
+    <div class="media">
+      <%= link_to topic.title, topic %>
     </div>
+    <% end %>
+    <br>
+
+    <%= link_to "New Topic", new_topic_path, class: "btn btn-success" %>
   </div>

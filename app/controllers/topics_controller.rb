@@ -2,7 +2,7 @@ class TopicsController < ApplicationController
 
   def index
     @topics = Topic.all
-    # @topic = Topic.new
+    @topic = Topic.new
   end
 
   def show
@@ -17,10 +17,12 @@ class TopicsController < ApplicationController
   def create
     @user = current_user
     @topic = @user.topics.new(topic_params)
+    # @topic = Topic.new(topic_params)
 
     if @topic.save
       flash[:notice] = "Success! Your topic has been created."
       redirect_to @topic
+      # redirect_to topics_path
     else
       flash.now[:error] = "Oh snap, your request has failed. Please try again!"
       render :new
@@ -33,7 +35,8 @@ class TopicsController < ApplicationController
 
   def update
     @topic = Topic.find(params[:id])
-    @topic.update_attributes(topic_params)
+    # @topic.update_attributes(topic_params)
+    @topic.assign_attributes(topic_params)
 
     if @topic.save
       flash[:notice] = "Money! Pocket change complete."
@@ -46,13 +49,13 @@ class TopicsController < ApplicationController
 
   def destroy
     @topic = Topic.find(params[:id])
-    title = @topic.title
+    # title = @topic.title
 
     if @topic.destroy
       flash[:notice] = "\"#{@topic.title}\", who? This topic has been deleted."
       redirect_to topics_path
     else
-      flash.now[:error] = "Process incomplete. To delete this topic, please resubmit your request. Change"
+      flash.now[:error] = "Dang it, there's been an error. Resubmit your request to delete this topic."
       render :show
     end
   end
