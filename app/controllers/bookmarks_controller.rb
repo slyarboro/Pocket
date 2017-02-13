@@ -1,20 +1,18 @@
 class BookmarksController < ApplicationController
 
   def show
-    # @bookmark = Bookmark.find(params[:id])
-    @bookmark = @topic.bookmarks.find(params[:id])
+    @bookmark = Bookmark.find(params[:id])
   end
 
   def new
-    # @topic = Topic.find(params[:topic_id])
-    @bookmark = Bookmark.new
+    @topic = Topic.find(params[:topic_id])
+    @bookmark = @topic.bookmarks.new
   end
 
   def create
-    @bookmark = Bookmark.new(bookmark_params)
-    # @bookmark = Bookmark.new
-    # @bookmark = @topic.bookmarks.new(bookmark_params)
-    @bookmark.topic = @topic
+    @topic = Topic.find(params[:topic_id])
+    @bookmark = @topic.bookmarks.build(bookmark_params)
+    @bookmark.user = current_user
 
     if @bookmark.save
       flash[:notice] = "Your new bookmark has been created!"
@@ -26,12 +24,10 @@ class BookmarksController < ApplicationController
   end
 
   def edit
-    # @topic = Topic.find(params[:topic_id])
     @bookmark = Bookmark.find(params[:id])
   end
 
   def update
-    # @topic = Topic.find(params[:topic_id])
     @bookmark = Bookmark.find(params[:id])
     @bookmark.assign_attributes(bookmark_params)
 
@@ -45,9 +41,7 @@ class BookmarksController < ApplicationController
   end
 
   def destroy
-    # @topic = Topic.find(params[:topic_id])
     @bookmark = Bookmark.find(params[:id])
-    # @bookmark_url = @bookmark.url
 
     if @bookmark.destroy
       flash[:notice] = "\"#{@bookmark.url}\" has been deleted."
