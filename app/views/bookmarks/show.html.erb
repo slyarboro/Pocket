@@ -4,6 +4,9 @@
 <%= link_to "Edit Bookmark", edit_topic_bookmark_path, class: "btn btn-success btn-sm" %>
 <%= link_to "Delete Bookmark, son", topic_bookmark_path, method: :delete, class: "btn btn-danger btn-sm" %>
 
+<h2><%= @bookmark.url %></h2>
+<%= link_to "Back", topic_path(@bookmark.topic), class: "btn btn-primary btn-sm" %>
+
 
    <!-- <%= link_to "Edit Bookmark", edit_topic_bookmark_path(@bookmark.topic, @bookmark), class: "btn btn-warning" %>
 
