@@ -1,16 +1,27 @@
 <div class="panel-body">
+  <h1>Your Top Pick Topics</h1>
   <!-- <div class="box panel panel-default"> -->
-  <h1>Topics</h1>
-  <h4>Topic like it's hot.</h4>
+  <div class="row">
+    <div class="col-md-8">
+      <p>Topic like it's hot.</p>
+      <%= link_to "New Topic", new_topic_path, class: "btn btn-success" %>
+  <!-- <h1>Topics</h1>
+  <h4>Topic like it's hot.</h4> -->
   <!-- </div></div> -->
   <br>
-  <div class="col-md-8">
+  <!-- <div class="col-md-12"> -->
     <% @topics.each do |topic| %>
     <div class="media">
+      <div class="media-body">
+        <h5 class="media-heading">
       <%= link_to topic.title, topic %>
+      <%= link_to "Delete", topic, method: :delete, data: {confirm: "You sure you wanna delete this, boo?"} %>
+    </h5>
     </div>
     <% end %>
-    <br>
-
-    <%= link_to "New Topic", new_topic_path, class: "btn btn-success" %>
   </div>
+</div>
+    <!-- <br> -->
+
+    <!-- <%= link_to "New Topic", new_topic_path, class: "btn btn-success" %> -->
+  <!-- </div> -->

@@ -1,16 +1,23 @@
-<div>
-<h1>Welcome to Pocket</h1>
+<div class="container">
+  <div class="row">
+    <h1>Welcome to Pocket</h1>
+    <div class="col-md-8">
+      <h5>This seams to be the home page for Pocket.</h5>
+      <br>
+      <div class="posts">Shock it like Billie Jean. Mock it like Jean Girard.</div>
+      <div class="posts">Block it like Jean Béliveau. Knock it like Jean Pascal.</div>
+      <div class="posts">Sock it like Jean-Claude Van <i>Damme, son.</i></div>
+      <br>
 
-<p id="index-title">This seams to be the home page for Pocket.</p>
-<!-- <p>This seams to be the home page for Pocket.</p> -->
-<p><br>
-
-  <%= link_to "Sign In", new_user_session_path, class: "btn btn-primary" %>
-  <%= link_to "Sign Up", new_user_registration_path, class: "btn btn-primary" %>
-</p>
+      <%= link_to "Sign In", new_user_session_path, class: "btn btn-primary" %>
+      <%= link_to "Sign Up", new_user_registration_path, class: "btn btn-primary" %>
+      <br>
+    </div>
+    <div class="col-md-10">
+      <div class="row">
+        <i><h5>Special thanks to Google, the inordinate number of Jean afficionados in the world with internet connection, and this application, filling yet another Pocket on the cargo shorts of my life (browsing history).</i></h5>
+      </div>
+    </div>
+  </div>
 </div>
-
-<div class="posts">Knock it like Jean Pascal.</div>
-<div class="posts">Sock it like Jean-Claude Van Damme.</div>
-<br>
-<section>Section element in the house.</section>
+</div>

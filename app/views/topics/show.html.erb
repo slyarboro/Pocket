@@ -1,9 +1,24 @@
 <h2><%= @topic.title %></h2>
 <br>
-<%= link_to "Edit Topic", edit_topic_path, class: "btn btn-warning btn-sm" %>
-<%= link_to "Delete Topic", @topic, class: "btn btn-danger btn-sm", method: :delete, data: { confirm: 'Are you sure you want to delete this topic?'} %>
+<%= link_to "Edit Topic", edit_topic_path, class: "btn btn-warning" %>
+<%= link_to "Delete Topic", @topic, class: "btn btn-danger", method: :delete, data: { confirm: "Are you sure you want to delete this topic?"} %>
 
 
 <br><br>
-<%= link_to "Add New Bookmark", new_topic_bookmark_path(@topic), class: "btn btn-success btn-sm" %>
-<%= link_to "Back", topics_path, class: "btn btn-primary btn-sm" %>
+<%= link_to "Add New Bookmark", new_topic_bookmark_path(@topic), class: "btn btn-success" %>
+<%= link_to "Back", topics_path, class: "btn btn-primary" %>
+
+<div class="row">
+  <div class="col-md-8">
+    <div class="media">
+      <div class="media-body">
+        <% @topic.bookmarks.each do |link| %>
+        <ul>
+            <%= link_to link.url, topic_bookmark_path(link.topic, link) %>
+            <div>
+              <%= link_to "Edit", edit_topic_bookmark_path(link.topic, link), class: "btn btn-warning" %>
+              <%= link_to "Delete", [link.topic, link], method: :delete, class: "btn btn-warning", data: {confirm: "You sure?"} %>
+            </div>
+          </ul>
+          <% end %>
+        </div>

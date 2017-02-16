@@ -1,17 +1,10 @@
-<h1>Bookmarks</h1>
-
-<%= link_to @bookmark %>
-<%= link_to "Edit Bookmark", edit_topic_bookmark_path, class: "btn btn-success btn-sm" %>
-<%= link_to "Delete Bookmark, son", topic_bookmark_path, method: :delete, class: "btn btn-danger btn-sm" %>
-
-<h2><%= @bookmark.url %></h2>
-<%= link_to "Back", topic_path(@bookmark.topic), class: "btn btn-primary btn-sm" %>
-
-
-   <!-- <%= link_to "Edit Bookmark", edit_topic_bookmark_path(@bookmark.topic, @bookmark), class: "btn btn-warning" %>
-
-   <%= link_to "Delete Bookmark", [@bookmark.topic, @bookmark], method: :delete, class: 'btn btn-danger', data: {confirm: 'Are you sure you want to delete this bookmark?'} %>
-
-   <h1><%= @bookmark.url %></h1>
-   <%= link_to "Back", topic_path(@bookmark.topic), class: 'btn btn-primary' %>
- </div> -->
+<div class="container">
+  <div class="row">
+    <h2>BOOKMARK</h2>
+    <!-- <div class="row"> -->
+    <%= link_to "Edit Bookmark", edit_topic_bookmark_path, class: "btn btn-warning btn-sm" %>
+    <%= link_to "Delete Bookmark", [@bookmark.topic, @bookmark], method: :delete, class: "btn btn-danger btn-sm", data: {confirm: "You have requested to delete this bookmark.
+      Please click OK to confirm."} %>
+    </div>
+      <h4><%= @bookmark.url %></h4>
+      <%= link_to "Back", topic_path(@bookmark.topic), class: "btn btn-primary btn-sm" %>

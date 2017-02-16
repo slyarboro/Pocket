@@ -1,13 +1,14 @@
 class TopicsController < ApplicationController
+  before_action :authenticate_user!
 
   def index
     @topics = Topic.all
-    @topic = Topic.new
+    # @topic = Topic.new
   end
 
   def show
     @topic = Topic.find(params[:id])
-    @bookmark = Bookmark.new
+    # @bookmark = Bookmark.new
   end
 
   def new
@@ -26,6 +27,7 @@ class TopicsController < ApplicationController
     else
       flash.now[:error] = "Oh snap, your request has failed. Please try again!"
       render :new
+      # redirect_to @topic
     end
   end
 
@@ -53,7 +55,8 @@ class TopicsController < ApplicationController
 
     if @topic.destroy
       flash[:notice] = "\"#{@topic.title}\", who? This topic has been deleted."
-      redirect_to topics_path
+      redirect_to action: :index
+      # redirect_to topics_path
     else
       flash.now[:error] = "Dang it, there's been an error. Resubmit your request to delete this topic."
       render :show

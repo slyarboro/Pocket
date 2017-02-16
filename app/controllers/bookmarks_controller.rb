@@ -17,14 +17,18 @@ class BookmarksController < ApplicationController
     if @bookmark.save
       flash[:notice] = "Your new bookmark has been created!"
       redirect_to @topic
+      # redirect_to @bookmark.topic
     else
       flash.now[:error] = "Pocket was unable to save new bookmark. Please try again."
       render :new
+      # redirect_to @bookmark.topic
     end
   end
 
   def edit
     @bookmark = Bookmark.find(params[:id])
+    @topic = Topic.find(params[:topic_id])
+    @bookmark.save
   end
 
   def update
@@ -37,6 +41,7 @@ class BookmarksController < ApplicationController
     else
       flash.now[:error] = "Pocket was unable to save these changes to your bookmark."
       render :edit
+      # redirect_to @bookmark.topic
     end
   end
 

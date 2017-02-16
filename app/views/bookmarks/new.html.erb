@@ -13,16 +13,18 @@
           <li>An app of affirmative denim:
             <p> Pocket is jean yes.</li>
         </ul>
-        <%= form_for [@topic, @bookmark], url: topic_bookmarks_path do |f| %>
+      </div>
+      <div class="col-md-8">
+        <%= form_for [@topic, @bookmark] do |f| %>
         <div class="form-group">
           <!-- <%= f.label :url %> -->
           <%= f.text_field :url, class: 'form-control', placeholder: "Hyperlink a new bookmark by pasting URL here." %>
+        </div>
 
-          <div class="form-group">
+          <!-- <div class="form-group"> -->
             <%= f.submit "Save", class:
-            "btn btn-success btn-sm" %>
-            <%= link_to "Back", topic_path(@topic), class: "btn btn-primary btn-sm" %>
-
+            "btn btn-success" %>
+            <%= link_to "Back", topic_path(@topic), class: "btn btn-primary" %>
+            <% end %>
           </div>
-          <% end %>
         </div>
