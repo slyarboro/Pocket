@@ -16,8 +16,8 @@
         <ul>
             <%= link_to link.url, topic_bookmark_path(link.topic, link) %>
             <div>
-              <%= link_to "Edit", edit_topic_bookmark_path(link.topic, link), class: "btn btn-warning" %>
-              <%= link_to "Delete", [link.topic, link], method: :delete, class: "btn btn-warning", data: {confirm: "You sure?"} %>
+              <%= link_to "Edit", edit_topic_bookmark_path(link.topic, link), class: "btn btn-warning btn-sm" %>
+              <%= link_to "Delete", [link.topic, link], method: :delete, class: "btn btn-danger btn-sm", data: {confirm: "You sure?"} %>
             </div>
           </ul>
           <% end %>
