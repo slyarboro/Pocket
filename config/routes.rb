@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
 
-  # resources :topics do
-  #   resources :bookmarks, except: [:index]
+  resources :topics do
+    resources :bookmarks, except: [:index]
     # resources :bookmarks, only: [:index, :create, :show, :update, :destroy]
     # resources :tags, only: [:create, :update]
   end

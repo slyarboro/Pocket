@@ -1,10 +1,14 @@
-<!-- <div class="container">
+<div class="container">
   <div class="row">
-    <h2>BOOKMARK</h2> -->
-    <!-- <div class="row"> -->
-    <!-- <%= link_to "Edit Bookmark", edit_topic_bookmark_path, class: "btn btn-warning btn-sm" %>
-    <%= link_to "Delete Bookmark", [@bookmark.topic, @bookmark], method: :delete, class: "btn btn-danger btn-sm", data: {confirm: "You have requested to delete this bookmark.
-      Please click OK to confirm."} %>
+    <h3>Topic | Bookmark Page</h3><br />
+
+    <div class="col-md-8">
+      <h2><%= @bookmark.url %></h2>
+      <%= link_to "Edit", edit_topic_bookmark_path, class: "btn btn-warning" %>
+      <%= link_to "Delete", [@bookmark.topic, @bookmark], method: :delete, class: "btn btn-danger", data: {confirm: "You have requested to delete this bookmark.
+        Please click OK to confirm."} %>
+      </div>
     </div>
-      <h4><%= @bookmark.url %></h4>
-      <%= link_to "Back", topic_path(@bookmark.topic), class: "btn btn-primary btn-sm" %> -->
+    <br />
+    <%= link_to "Back to Topic", topic_path(@bookmark.topic), class: "btn btn-primary" %>
+</div>

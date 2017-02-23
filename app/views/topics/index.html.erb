@@ -1,19 +1,20 @@
 <div class="panel-body">
+<div class="container">
   <h1>Your Top Pick Topics</h1>
 
   <div class="row">
     <div class="col-md-8">
-      <p>Topic like it's hot.</p>
-      <%= link_to "New Topic", new_topic_path, class: "btn btn-success" %>
-
-  <br>
+      <i><h4>Topic like it's hot.</h4></i>
+      <%= link_to "New Topic", new_topic_path, class: "btn btn-success" %><br />
 
     <% @topics.each do |topic| %>
     <div class="media">
       <div class="media-body">
         <h5 class="media-heading">
-      <%= link_to topic.title, topic %>
-      <%= link_to "Delete", topic, method: :delete, data: {confirm: "You sure you wanna delete this, boo?"} %>
+      <%= link_to topic.title, topic %> | 
+      <%= link_to "Delete", topic, method: :delete, data: {confirm: "Deleting topics willy-nilly? Misclicks happen.
+
+Confirm purge is for intended bookmarks by double checking topic title before selecting OK."} %>
     </h5>
     </div>
     <% end %>

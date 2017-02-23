@@ -1,0 +1,57 @@
+<div class="container">
+  <div class="row">
+
+<h2>Edit <%= resource_name.to_s.humanize %></h2>
+
+<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+<%= devise_error_messages! %><br>
+
+<p>Provide either your username or email address used to create your Pocket account.</p>
+
+<div class="field">
+  <%= f.label :email %><br />
+  <%= f.email_field :email, autofocus: true %>
+</div><p>
+  <div><%= f.label :username %><br />
+    <%= f.text_field :username %></div><p>
+
+      <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+      <div>Currently waiting confirmation for:
+        <%= resource.unconfirmed_email %></div>
+        <% end %>
+        <br><p>
+
+          <i>To keep using your current password at login, please leave the following fields blank.</i>
+
+          <div class="field">
+            <%= f.label :current_password %><br />
+            <%= f.password_field :current_password, autocomplete: "off" %>
+          </div><p>
+            <div>
+              <%= f.label :new_password %><br />
+              <%= f.password_field :new_password, autocomplete: "off" %>
+              <% if @minimum_password_length %><br />
+
+              <small class="text-muted"><em><%= @minimum_password_length %> characters minimum</em></small>
+              <% end %>
+            </div><p>
+
+              <div class="field">
+                <%= f.label :confirm_new_password %><br />
+                <%= f.password_field :confirm_new_password, autocomplete: "off" %>
+              </div><p>
+
+                <div class="actions">
+                  <%= f.submit "Update" %>
+                </div>
+                <% end %>
+                <br>
+                <br>
+
+
+                <h3>Delete My Account</h3><p>
+                <p>Deleting your Pocket account removes all topic favorites, bookmarked pages, and URLs shared by other users. Once your request is confirmed, any data associated with your Pocket's username will be unrecoverable, as history of previous activity will no longer exist. Do you still wish to continue deleting your account?
+                  <%= button_to "Yes, I want to delete my Pocket account", registration_path(resource_name), data: { confirm:
+                  "Thank you for using Pocket! You will jeanuinely be missed. Select OK to confirm delete." }, method: :delete %></p>
+
+                  <%= link_to "Back", :back %>

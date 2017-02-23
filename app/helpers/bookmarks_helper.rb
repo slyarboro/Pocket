@@ -1,2 +1,2 @@
-# module BookmarksHelper
-# end
+module BookmarksHelper
+end

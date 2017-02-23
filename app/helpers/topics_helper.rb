@@ -1,2 +1,2 @@
-# module TopicsHelper
-# end
+module TopicsHelper
+end
