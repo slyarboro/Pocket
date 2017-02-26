@@ -1,3 +1,59 @@
+<!-- <h2><%= @topic.title %></h2>
+<br>
+<%= link_to "Edit Topic", edit_topic_path, class: "btn btn-warning" %>
+<%= link_to "Delete Topic", @topic, class: "btn btn-danger", method: :delete, data: { confirm: "Are you sure you want to delete this topic?"} %>
+
+
+<br><br>
+<%= link_to "Add New Bookmark", new_topic_bookmark_path(@topic), class: "btn btn-success" %>
+<%= link_to "Back", topics_path, class: "btn btn-primary" %>
+
+<div class="row">
+  <div class="col-md-8">
+    <div class="media">
+      <div class="media-body">
+        <% @topic.bookmarks.each do |link| %>
+        <ul>
+            <%= link_to link.url, topic_bookmark_path(link.topic, link) %>
+            <div>
+              <%= link_to "Edit", edit_topic_bookmark_path(link.topic, link), class: "btn btn-warning" %>
+              <%= link_to "Delete", [link.topic, link], method: :delete, class: "btn btn-warning", data: {confirm: "You sure?"} %>
+            </div>
+          </ul>
+          <% end %>
+        </div> -->
+
+
+
+
+<h1 class="text-center"><%= @topic.title %></h1>
+<!-- <p class="text-center"><%= link_to "Delete Topic", @topic, method: :delete, class: 'btn btn-danger' %></p> -->
+
+<p class="text-center"><%= link_to "Delete Topic", @topic, method: :delete, class: 'btn btn-danger btn-sm' %></p>
+ <p><%= link_to "Create Bookmark", new_topic_bookmark_path(@topic), class: 'btn btn-success' %></p>
+
+<br>
+ <div class="container">
+   <div class="row">
+     <ul class="col-md-3">
+         <% @bookmarks.each do |bookmark| %>
+           <!-- <li><%= link_to bookmark.url, bookmark.url %></p> -->
+        <p><%= link_to bookmark.url, bookmark.url %> -
+         <%= link_to "Edit", edit_topic_bookmark_path(@topic, bookmark), class: 'btn btn-primary btn-sm' %>
+         <%= link_to "Delete", [@topic, bookmark], method: :delete, class: 'btn btn-danger btn-sm' %>
+         </p>
+
+         <% end %>
+       </p>
+     </div>
+   </div>
+ </div>
+
+
+
+<!--
+
+
 <div class="row">
   <div class="container">
     <h2><%= @topic.title %></h2>
@@ -29,4 +85,4 @@
     <br>
 
 
-    <%= link_to "Back to All Topics", topics_path, class: "btn btn-primary" %>
+    <%= link_to "Return to All Topics", topics_path, class: "btn btn-info btn-md" %> -->

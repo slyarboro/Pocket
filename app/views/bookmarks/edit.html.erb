@@ -11,9 +11,10 @@
       <!-- <%= f.label :url %> -->
       <%= f.text_field :url, class: 'form-control', placeholder: "Update bookmark by pasting desired URL here." %>
     </div>
-    <!-- <div class="form-group"> -->
+    <div class="form-group">
       <%= f.submit "Save", class: "btn btn-success" %>
-      <%= link_to "Back", topic_path(@topic), class: "btn btn-primary" %>
+      <!-- <%= link_to "Back", topic_path(@topic), class: "btn btn-primary" %> -->
+    </div>
     <% end %>
   </div>
 </div>

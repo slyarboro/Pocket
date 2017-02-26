@@ -7,11 +7,15 @@
       <div class="posts">Shock it like Billie Jean. Mock it like Jean Girard.</div>
       <div class="posts">Block it like Jean Béliveau. Knock it like Jean Pascal.</div>
       <div class="posts">Sock it like Jean-Claude Van <i>Damme, son.</i></div>
-      <br>
-
+      <!-- <br>
+      <% if user_signed_in? %>
+      <%= link_to "Edit Profile", edit_user_registration_path, class: "btn btn-info" %>
+      <%= link_to "Sign Out", destroy_user_session_path, method: :delete, class: "btn btn-info" %>
+      <% else %>
       <%= link_to "Sign In", new_user_session_path, class: "btn btn-primary" %>
       <%= link_to "Sign Up", new_user_registration_path, class: "btn btn-primary" %>
       <br>
+      <% end %>
     </div>
     <div class="col-md-10">
       <div class="row">
@@ -20,4 +24,22 @@
     </div>
   </div>
 </div>
-</div>
+</div> -->
+
+<div class="container">
+   <div class="jumbotron">
+     <h1 class="text-center">Blocmarks:</h1>
+     <p class="text-center">Social Bookmarking With Email Integration</p>
+     <p class="text-center">
+       <% if user_signed_in? %>
+         <%= link_to "Edit Profile", edit_user_registration_path, class: 'btn btn-info btn-lg' %>
+         <!-- <%= link_to "Sign Out", destroy_user_session_path, class: 'btn btn-info btn-lg' %> -->
+         <%= link_to "Sign Out", destroy_user_session_path, method: :delete, class: 'btn btn-info btn-lg' %>
+
+       <% else %>
+         <%= link_to "Sign Up", new_user_registration_path, class: "btn btn-info btn-lg" %>
+         <%= link_to "Sign In", new_user_session_path, class: 'btn btn-info btn-lg' %>
+       <% end %>
+     </p>
+   </div>
+ </div>

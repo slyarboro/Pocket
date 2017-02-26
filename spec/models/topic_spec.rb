@@ -1,19 +1,31 @@
+# require 'rails_helper'
+#
+# RSpec.describe Topic, type: :model do
+#   pending "add some examples to (or delete) #{__FILE__}"
+# end
+
+
+
+#
+#
+#
 require 'rails_helper'
-
+require 'faker'
+#
 RSpec.describe Topic, type: :model do
-# => modify for faker / random obsolete
-#   let(:name) { RandomData.random_sentence }
-#   let(:description) { RandomData.random_paragraph }
-#   let(:public) { true }
-#   let(:topic) { Topic.create!(name: name, description: description) }
+#   let(:title) { Faker::Lorem.word }
+#   let(:email) { Faker::Internet.email }
+  let(:user) { User.create!(name: "Bobby", username: "oldgregg", email: "robert@yep.com", password: "puffdaddy") }
+  let(:topic) { Topic.create!(title: title, user: user) }
+#
+  it { is_expected.to have_many(:bookmarks) }
+  it { is_expected.to belong_to(:user)}#
 
-  describe "attributes" do
-     it "has name, description, and public attributes" do
-       expect(topic).to have_attributes(name: name, description: description, public: public)
-     end
+  it { is_expected.to validate_presence_of(:title) }
 
-    it "is public by default" do
-     expect(topic.public).to be(true)
-   end
- end
+#   describe "attributes" do
+#     it "has title and user attributes" do
+#       expect(topic).to have_attributes(title: title, user: user)
+#     end
+#   end
 end
