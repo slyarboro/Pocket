@@ -1,79 +1,95 @@
 class TopicsController < ApplicationController
   before_action :authenticate_user!
+  before_action :set_topic, only: [:show, :edit, :update, :destroy]
 
+  # GET           ../topics
   def index
     @topics = Topic.all
     # # @topic = Topic.new
   end
 
+  # GET           ../topics/1
   def show
-    @topic = Topic.find(params[:id])
-    # @bookmark = Bookmark.new
-    @bookmarks = @topic.bookmarks
+    # @topic = Topic.find(params[:id])
+    # @bookmarks = @topic.bookmarks
   end
 
+  # GET           ../topics/new
   def new
     @topic = Topic.new
   end
 
-  def create
-    # @user = current_user
-    @topic.user = current_user
-  #   @topic = @user.topics.new(topic_params)
-    @topic = Topic.new(topic_params)
-  #
-    if @topic.save
-  #     flash[:notice] = "Success! Your topic has been created."
-      # redirect_to @topic
-     redirect_to @topic, notice: "Topic added succesfully."
-
-  #     # redirect_to topics_path
-    else
-      flash.now[:error] = "Oh snap, your request has failed. Please try again!"
-  #     render :new
-  render @topics
-  #     # redirect_to @topic
-    end
-  end
-
+  # GET           ../topics/1/edit
   def edit
     # @topic = Topic.find(params[:id])
   end
 
-  # def update
+  # POST            ../topics
+  def create
+    # @user = current_user
+    # @topic.user = current_user
+    # @topic = Topic.new(topic_params)
+    @topic = current_user.topics.new(topic_params)
+  #
+    if @topic.save
+      flash[:notice] = "Success! Your topic has been created."
+      redirect_to @topic
+    #  redirect_to @topic, notice: "Topic added succesfully."
+
+  #     # redirect_to topics_path
+    else
+      flash.now[:error] = "Oh snap, your request has failed. Please try again!"
+      render :new
+  # render @topics
+  #     # redirect_to @topic
+    end
+  end
+
+  # PATCH(PUT)            ../topics/1
+  def update
   #   @topic = Topic.find(params[:id])
   #   # @topic.update_attributes(topic_params)
   #   @topic.assign_attributes(topic_params)
   #
-  #   if @topic.save
-  #     flash[:notice] = "Money! Pocket change complete."
-  #     redirect_to @topic
-  #   else
-  #     flash.now[:error] = "There was an error saving your changes. Please resubmit your request."
-  #     render :edit
-  #   end
-  # end
+    # if @topic.save
+      if @topic.update(topic_params)
+      flash[:notice] = "Money! Pocket change complete."
+      redirect_to @topic
+    else
+      flash.now[:error] = "There was an error saving your changes. Please resubmit your request."
+      render :edit
+    end
+  end
   #
+
+  # DELETE            ../topics/1
   def destroy
-    @topic = Topic.find(params[:id])
+    # @topic = Topic.find(params[:id])
   #   # title = @topic.title
   #
     if @topic.destroy
       flash[:notice] = "\"#{@topic.title}\", who? This topic has been deleted."
-      redirect_to action: :index
+      # redirect_to action: :index
+      redirect_to topics_url
   #     # redirect_to topics_path
     else
       flash.now[:error] = "Dang it, there's been an error. Resubmit your request to delete this topic."
-      redirect_to action: :index
+      # redirect_to action: :index
+      render :index
 
   #     render :show
     end
   end
-  #
-  # private
-  #
+
+
+  private
+
   def topic_params
     params.require(:topic).permit(:title)
+  end
+
+  def set_topic
+    @topic = Topic.find(params[:id])
   end
 end
 

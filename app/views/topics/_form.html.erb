@@ -1,7 +1,26 @@
 <%= form_for @topic do |f| %>
    <div class="form-group">
-     <%= f.label :title %>
-     <%= f.text_field :title, class: 'form-control', placeholder: "Enter topic" %>
-   </div>
-   <%= f.submit "Save", class: 'btn btn-success' %>
- <% end %>
+     <!-- <%= f.label :title %>
+     <%= f.text_field :title, class: 'form-control', placeholder: "Enter topic" %> -->
+
+     <% if @topic.errors.any? %>
+       <div class="alert alert-danger">
+         
+         <h2>Looks like <i>something</i> prevented your topic from being saved. Are you going to let <%= pluralize(@topic.errors.count, "error") %> play you like that?</h2>
+         <ul>
+         <% @topic.errors.full_messages.each do |message| %>
+           <li><%= message %></li>
+         <% end %>
+         </ul>
+       </div>
+     <% end %>
+
+     <%= form_group_tag(@topic.errors[:title]) do %>
+       <%= f.label :title %><br>
+       <%= f.text_field :title, class: 'form-control', placeholder: "Enter application title, toots" %>
+     <% end %>
+
+     <div class="form-group">
+       <%= f.submit "Save", class: 'btn btn-success', id: 'add-application' %>
+     </div>
+   <% end %>

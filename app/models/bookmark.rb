@@ -4,7 +4,8 @@ class Bookmark < ApplicationRecord
 
   before_save :format_url
 
-  validates :url, :presence => true
+  validates :url, presence: true
+  validates :url, url: true
 
 # end
 

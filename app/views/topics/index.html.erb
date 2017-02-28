@@ -1,63 +1,33 @@
-<div class="page-header">
-   <h1 class="text-center">
-     <!-- All Blockmarks</h1> -->
- <!-- </div>
- <div class="panel-body"> -->
-  <!-- <h1> -->
-    Your Top Pick Topics</h1></div>
-  <!-- <div class="box panel panel-default"> -->
-  <!-- <div class="row">
-    <div class="col-md-8">
-      <p>Topic like it's hot.</p> -->
-      <p>
-      <%= link_to "New Topic", new_topic_path, class: "btn btn-success" %>
-    </p>
-  <!-- <h1>Topics</h1>
-  <h4>Topic like it's hot.</h4> -->
-  <!-- </div></div> -->
-  <!-- <br> -->
-  <!-- <div class="col-md-12"> -->
-    <!-- <% @topics.each do |topic| %>
-    <div class="media">
-      <div class="media-body">
-        <h5 class="media-heading">
-      <%= link_to topic.title, topic %>
-      <%= link_to "Delete", topic, method: :delete, data: {confirm: "You sure you wanna delete this, boo?"} %>
-    </h5>
-    </div>
+<!-- <div class="page-header"> -->
+<!-- <h1 class="text-center"> -->
+<!-- All Blockmarks</h1> -->
+<!-- </div>
+<div class="panel-body"> -->
+<!-- <h1> -->
+<h1>Topic Like It's Hot</h1>
+<!-- <div class="box panel panel-default"> -->
+<!-- <div class="row">
+<div class="col-md-8">
+<p>Topic like it's hot.</p> -->
+
+<table class="table">
+  <tbody>
+    <!-- <div class="col-md-12"> -->
+    <% @topics.each do |topic| %>
+    <!-- <div class="media">
+    <div class="media-body">
+    <h5 class="media-heading"> -->
+    <tr>
+      <td><h4><%= link_to "##{topic.title}", topic %></h4></td>
+
+      <td>
+        <%= link_to "Edit", edit_topic_path(topic), class: 'btn btn-warning' %>
+        <%= link_to "Delete", topic, method: :delete, class: 'btn btn-danger', data: {confirm: "You sure you wanna delete this, boo?"} %>
+      </td>
+    </tr>
     <% end %>
-  </div>
-</div> -->
-    <!-- <br> -->
+    <tbody>
+    </table>
+    <br><br>
 
-    <!-- <%= link_to "New Topic", new_topic_path, class: "btn btn-success" %> -->
-  <!-- </div> -->
-
-
-<div class="container">
-   <div class="row">
-     <% @topics.each do |topic| %>
-       <div class="media">
-         <div class="media-body">
-           <h4 class="media-heading">
-             <!-- <br> -->
-             <!-- <p><%= link_to topic.title, topic %></p> -->
-            <!-- <p><%= link_to topic.title, topic %> </p>
-              <p><h6><%= link_to "Delete Topic", topic, method: :delete, class: 'btn btn-warning btn-sm' %></p> -->
-
-              <p><%= link_to topic.title, topic %> -
-                <%= link_to "Delete Topic", topic, method: :delete, class: 'btn btn-danger-outline' %></p>
-             <br>
-             <% topic.bookmarks.each do |bookmark| %>
-               <!-- <h6><%= link_to bookmark.url, bookmark.url, :target => '_blank' %> -->
-               <!-- </h6> -->
-               <p><%= link_to bookmark.url, bookmark.url, :target => '_blank' %></p>
-
-               <br>
-             <% end %>
-           </h4>
-         </div>
-       </div>
-     <% end %>
-   </div>
- </div>
+    <%= link_to "New Topic", new_topic_path, class: "btn btn-success" %>

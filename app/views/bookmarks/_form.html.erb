@@ -1,0 +1,22 @@
+<%= form_for [topic, bookmark] do |f| %>
+
+<div class="form-group">
+  <% if bookmark.errors.any? %>
+  <div class="alert alert-danger">
+    <h2><%= pluralize(bookmark.errors.count, "error") %> prohibited this bookmark from being saved:</h2>
+    <ul>
+      <% bookmark.errors.full_messages.each do |message| %>
+      <li><%= Thanks for playing; try again. %></li>
+      <% end %>
+    </ul>
+  </div>
+  <% end %>
+
+  <%= form_group_tag(bookmark.errors[:url]) do %>
+  <!-- <%= f.label :url %><br> -->
+  <%= f.text_field :url, class: 'form-control', placeholder: "Paste URL here to complete your book-Marky Mark" %>
+  <% end %>
+  <div class="form-group">
+    <%= f.submit "Save", class: 'btn btn-success' %>
+  </div>
+  <% end %>

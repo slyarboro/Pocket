@@ -1,32 +1,19 @@
 <!-- <div class="container">
-  <div class="row">
-    <h2>BOOKMARK</h2> -->
-    <!-- <div class="row"> -->
-    <!-- <%= link_to "Edit Bookmark", edit_topic_bookmark_path, class: "btn btn-warning btn-sm" %>
-    <%= link_to "Delete Bookmark", [@bookmark.topic, @bookmark], method: :delete, class: "btn btn-danger btn-sm", data: {confirm: "You have requested to delete this bookmark.
-      Please click OK to confirm."} %>
-    </div>
-      <h4><%= @bookmark.url %></h4>
-      <%= link_to "Back", topic_path(@bookmark.topic), class: "btn btn-primary btn-sm" %> -->
-
-
-
- <h1>Bookmarks#show</h1>
- <p>Find me in app/views/bookmarks/show.html.erb</p>
-
-<!--
-
-<div class="container">
-  <div class="row">
+  <div class="row"> -->
     <h3>Topic | Bookmark Page</h3><br />
 
-    <div class="col-md-8">
-      <h2><%= @bookmark.url %></h2>
+
+    <h1><%= link_to "#{@bookmark.url}", @bookmark.url %></h1>
+
+
+    <!-- <div class="col-md-8">
+      <h2><%= @bookmark.url %></h2> -->
+
       <%= link_to "Edit", edit_topic_bookmark_path, class: "btn btn-warning" %>
       <%= link_to "Delete", [@bookmark.topic, @bookmark], method: :delete, class: "btn btn-danger", data: {confirm: "You have requested to delete this bookmark.
         Please click OK to confirm."} %>
-      </div>
+      <!-- </div>
     </div>
-    <br />
+    <br /> -->
+    <%= link_to "Back", topic_path(@bookmark.topic) %>
     <%= link_to "Return to Topic Page", topic_path(@bookmark.topic), class: "btn btn-info" %>
-</div> -->

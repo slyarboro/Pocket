@@ -3,17 +3,26 @@ before_action :authenticate_user!
 before_action :set_topics
 before_action :topic_bookmarks
 
-
+  # GET     ../bookmarks/1
   def show
     @bookmark = Bookmark.find(params[:id])
   end
 
+  # GET     ../bookmarks/new
   def new
     # @topic = Topic.find(params[:topic_id])
     # @bookmark = @topic.bookmarks.new
     @bookmark = Bookmark.new
   end
 
+  # GET      ../bookmarks/1/edit
+  def edit
+    @bookmark = Bookmark.find(params[:id])
+    @topic = Topic.find(params[:topic_id])
+    @bookmark.save
+  end
+
+  # POST      ../bookmarks
   def create
     @topic = Topic.find(params[:topic_id])
      @bookmark = Bookmark.new(bookmark_params)
@@ -34,12 +43,7 @@ before_action :topic_bookmarks
     end
   end
 
-  def edit
-    @bookmark = Bookmark.find(params[:id])
-    @topic = Topic.find(params[:topic_id])
-    @bookmark.save
-  end
-
+  # PATCH(PUT)      ../bookmarks/1
   def update
     @bookmark = Bookmark.find(params[:id])
     # @bookmark.assign_attributes(bookmark_params)
@@ -60,6 +64,7 @@ before_action :topic_bookmarks
     end
   end
 
+  # DELETE        ../bookmarks/1
   def destroy
     @bookmark = Bookmark.find(params[:id])
     @topic = Topic.find(params[:topic_id])
@@ -85,7 +90,16 @@ before_action :topic_bookmarks
   def bookmark_params
     params.require(:bookmark).permit(:url)
   end
+
+  def set_topic
+    @topic = Topic.find(params[:topic_id])
+  end
+
+  def set_bookmark
+    @bookmark = Bookmark.find(params[:id])
+  end
 end
+
 
 
 

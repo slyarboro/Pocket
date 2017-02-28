@@ -21,6 +21,6 @@
 
 en:
   # hello: "Hello world"
-  devise:
-    sessions:
+  # devise:
+  #   sessions:
       signed_in: 'Thanks for signing in. Welcome back!'

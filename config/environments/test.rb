@@ -62,13 +62,14 @@ Rails.application.configure do
   config.eager_load = false
 
   # Configure public file server for tests with Cache-Control for performance.
+  config.serve_static_assets  = true
   # config.public_file_server.enabled = true
   # config.public_file_server.headers = {
   #   'Cache-Control' => 'public, max-age=3600'
   # }
 
   # config.serve_static_files   = true
-  config.public_file_server.enabled = true
+  # config.public_file_server.enabled = true
   # config.static_cache_control = 'public, max-age=3600'
   config.public_file_server.headers = { 'Cache-Control' => 'public, max-age=3600' }
 
@@ -89,13 +90,13 @@ Rails.application.configure do
   config.action_mailer.delivery_method = :test
 
   # Randomize the order test cases are executed.
-  config.active_support.test_order = :random
+  # config.active_support.test_order = :random
 
   # Print deprecation notices to the stderr.
   config.active_support.deprecation = :stderr
 
   # Raises error for missing translations
   # config.action_view.raise_on_missing_translations = true
-  # config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
+  config.action_mailer.default_url_options = { host: 'localhost', port: 3000}
 
 end
