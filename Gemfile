@@ -31,6 +31,7 @@ gem 'devise'
 gem 'rails-controller-testing'
 gem 'bootstrap-sass'
 gem 'validate_url'
+gem 'rails5-spec-converter'
 
 group :development, :test do
 # Call 'byebug' anywhere in the code to stop execution and get a debugger console

@@ -6,6 +6,7 @@ RSpec.describe TopicsController, type: :controller do
     before do
       @user = FactoryGirl.create(:user)
       sign_in :user, @user
+      # sign_in(resource, scope: :user)
       @topic = FactoryGirl.create(:topic)
     end
 
@@ -23,17 +24,17 @@ RSpec.describe TopicsController, type: :controller do
 
     describe "GET #show" do
       it "returns http success" do
-        get :show, {id: @topic.id}
+        get :show, params: {id: @topic.id}
         expect(response).to have_http_status(:success)
       end
 
       it "renders #show view" do
-        get :show, {id: @topic.id}
+        get :show, params: {id: @topic.id}
         expect(response).to render_template :show
       end
 
       it "assigns topic to Topic index" do
-        get :show, {id: @topic.id}
+        get :show, params: {id: @topic.id}
         expect(assigns(:topic)).to eq(@topic)
       end
     end
@@ -52,17 +53,17 @@ RSpec.describe TopicsController, type: :controller do
 
     describe "GET #edit" do
       it "returns http success" do
-        get :edit, {id: @topic.id}
+        get :edit, params: {id: @topic.id}
         expect(response).to have_http_status(:success)
       end
 
       it "renders edit view" do
-        get :edit, {id: @topic.id}
+        get :edit, params: {id: @topic.id}
         expect(response).to render_template :edit
       end
 
       it "assigns topic to be updated to @topic" do
-        get :edit, {id: @topic.id}
+        get :edit, params: {id: @topic.id}
         topic_instance = assigns(:topic)
 
         expect(topic_instance.id).to eq(@topic.id)
@@ -73,7 +74,7 @@ RSpec.describe TopicsController, type: :controller do
     describe "PUT update" do
       it "returns updated title" do
         new_title = Faker::Team.creature
-        put :update, id: @topic.id, topic: { title: new_title }
+        put :update, params: { id: @topic.id, topic: { title: new_title } }
         updated_topic = assigns(:topic)
         expect(updated_topic.id).to eq @topic.id
         expect(updated_topic.title).to eq new_title
@@ -81,7 +82,7 @@ RSpec.describe TopicsController, type: :controller do
 
       it "redirects user to updated topic" do
         new_title = Faker::Team.creature
-        put :update, id: @topic.id, topic: { title: new_title }
+        put :update, params: { id: @topic.id, topic: { title: new_title } }
         expect(response).to redirect_to @topic
       end
     end
@@ -102,7 +103,7 @@ RSpec.describe TopicsController, type: :controller do
 
     describe "GET #show" do
       it "redirects to sign in" do
-        get :show, {id: @topic.id}
+        get :show, params: {id: @topic.id}
         expect(response).to redirect_to(new_user_session_path)
       end
     end
@@ -116,7 +117,7 @@ RSpec.describe TopicsController, type: :controller do
 
     describe "GET #edit" do
       it "redirects to sign in" do
-        get :edit, {id: @topic.id}
+        get :edit, params: {id: @topic.id}
         expect(response).to redirect_to(new_user_session_path)
       end
     end
