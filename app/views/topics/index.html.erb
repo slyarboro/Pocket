@@ -1,33 +1,14 @@
-<!-- <div class="page-header"> -->
-<!-- <h1 class="text-center"> -->
-<!-- All Blockmarks</h1> -->
-<!-- </div>
-<div class="panel-body"> -->
-<!-- <h1> -->
-<h1>Topic Like It's Hot</h1>
-<!-- <div class="box panel panel-default"> -->
-<!-- <div class="row">
-<div class="col-md-8">
-<p>Topic like it's hot.</p> -->
+<h1>Pocket Book</h1>
 
-<table class="table">
-  <tbody>
-    <!-- <div class="col-md-12"> -->
-    <% @topics.each do |topic| %>
-    <!-- <div class="media">
-    <div class="media-body">
-    <h5 class="media-heading"> -->
-    <tr>
-      <td><h4><%= link_to "##{topic.title}", topic %></h4></td>
-
-      <td>
-        <%= link_to "Edit", edit_topic_path(topic), class: 'btn btn-warning' %>
-        <%= link_to "Delete", topic, method: :delete, class: 'btn btn-danger', data: {confirm: "You sure you wanna delete this, boo?"} %>
-      </td>
-    </tr>
-    <% end %>
-    <tbody>
-    </table>
-    <br><br>
-
-    <%= link_to "New Topic", new_topic_path, class: "btn btn-success" %>
+<div class = 'container'>
+  <div class = 'row'>
+    <%= link_to "+ New Topic", new_topic_path, class: 'btn btn-default' %>
+  </div>
+  <div class = 'row'>
+    <div class = 'col-md-8'>
+      <% @topics.each do |topic| %>
+        # <% link_to topic.title, topic %>
+      <% end %>
+    </div>
+  </div>
+</div>
