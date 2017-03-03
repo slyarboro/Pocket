@@ -1,24 +1,3 @@
-<div class="container">
-  <h1>Pocket Change</h1>
+<h1>Edit Topic</h1>
 
-  <!-- <div class="row"> -->
-
-  <!-- <%= render "form" %> -->
-
-  <div class="col-md-8">
-    <%= form_for @topic do |f| %>
-    <div class="form-group">
-      <%= f.label :title %>
-      <%= f.text_field :title, class: 'form-control', placeholder: "Title your topic, toots." %>
-    </div>
-
-
-    <div class="form-group">
-      <%= f.submit "Save", class: 'btn btn-success' %>
-      <!-- <%= link_to "Show", @topic %> |
-      <%= link_to "Back", topics_path %> -->
-    </div>
-    <% end %>
-    <!-- </div> -->
-  </div>
-</div>
+<%= render "form" %>

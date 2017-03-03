@@ -29,7 +29,7 @@ RSpec.describe BookmarksController, type: :controller do
         new_bookmark = "Bookmarky Mark"
         put :update, topic_id: @topic.id, id: @bookmark.id, user_id: @user.id, bookmark: {url: new_bookmark }
         updated_bookmark = assigns(:bookmark)
-        expect(updated_bookmark.url).to eq(new_bookmark)
+        expect(updated_bookmark.url).to eq("http://Bookmarky Mark")
       end
     end
 

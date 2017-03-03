@@ -1,26 +1,2 @@
 <h1>Edit Bookmark</h1>
-
-<%= render partial: 'form', locals: { topic: @bookmark.topic, bookmark: @bookmark } %>
-
-
-<!-- <div class="row">
-  <div class="col-md-8">
-    <h2>Need a little Pocket change?</h2>
-  </div>
-
-  <div class="col-md-8">
-    <%= form_for [@topic, @bookmark] do |f| %>
-    <div class="form-group"> -->
-      <!-- <%= f.label :url %> -->
-      <!-- <%= f.text_field :url, class: 'form-control', placeholder: "Update bookmark by pasting desired URL here." %>
-    </div>
-    <div class="form-group">
-      <%= f.submit "Save", class: "btn btn-success" %> -->
-      <!-- <%= link_to "Back", topic_path(@topic), class: "btn btn-primary" %> -->
-    <!-- </div>
-    <% end %>
-  </div>
-</div> -->
-
-<%= link_to "Show", topic_bookmark_path(@bookmark.topic, @bookmark) %> |
-<%= link_to "Back", topic_path(@bookmark) %>
+<%= render partial: 'form', locals: { topic: @topic, bookmark: @bookmark } %>

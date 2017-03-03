@@ -1,30 +1,3 @@
-<div class="panel-body">
+<h1>Topic Generator</h1>
 
-  <h1>Topic Generator</h1>
-
-  <div class="row">
-    <div class="col-md-8">
-      <h5>Rocket guys for your Pocket size.</h5>
-      <ul>
-        <li>Eugene Shoemaker.</li>
-        <li>Gene Kranz.</li>
-        <li>Gene Cernan.</li>
-      </ul>
-    </div>
-    
-    <div class="col-md-8">
-      <%= form_for @topic do |f| %>
-      <div class="form-group">
-        <%= f.text_field :title, class: 'form-control', placeholder: "Title your topic, toots." %>
-
-      </div>
-      <%= f.submit "Save", class: "btn btn-success" %>
-      <!-- <%= link_to "Back", topics_path, class: "btn btn-primary" %> -->
-      <% end %>
-    </div>
-  </div>
-</div>
-
-<!-- <%= render "form" %> -->
-
-<!-- <%= link_to "Back", topics_path %> -->
+<%= render "form" %>
