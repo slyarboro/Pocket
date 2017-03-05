@@ -6,8 +6,7 @@ RSpec.describe TopicsController, type: :controller do
     before do
       @user = FactoryGirl.create(:user)
       sign_in :user, @user
-      # sign_in(resource, scope: :user)
-      @topic = FactoryGirl.create(:topic)
+      @topic = FactoryGirl.create(:topic, user_id: @user.id)
     end
 
     describe "GET #index" do
