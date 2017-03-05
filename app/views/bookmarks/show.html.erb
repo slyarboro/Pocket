@@ -1,19 +1,12 @@
-<!-- <div class="container">
-  <div class="row"> -->
-    <h3>Topic | Bookmark Page</h3><br />
+<h1><%= link_to "#{@bookmark.url}", @bookmark.url %></h1>
 
+<% if policy(@bookmark).edit? %>
+  <%= link_to "Edit", edit_topic_bookmark_path, class: "btn btn-warning" %>
+<% end %>
 
-    <h1><%= link_to "#{@bookmark.url}", @bookmark.url %></h1>
+<% if policy(@bookmark).destroy? %>
+  <%= link_to "Delete", [@bookmark.topic, @bookmark], method: :delete, class: "btn btn-danger", data: {confirm: "You have requested to delete this bookmark.
+  Please click OK to confirm."} %>
+<% end %>
 
-
-    <!-- <div class="col-md-8">
-      <h2><%= @bookmark.url %></h2> -->
-
-      <%= link_to "Edit", edit_topic_bookmark_path, class: "btn btn-warning" %>
-      <%= link_to "Delete", [@bookmark.topic, @bookmark], method: :delete, class: "btn btn-danger", data: {confirm: "You have requested to delete this bookmark.
-        Please click OK to confirm."} %>
-      <!-- </div>
-    </div>
-    <br /> -->
-    <%= link_to "Back", topic_path(@bookmark.topic) %>
-    <%= link_to "Return to Topic Page", topic_path(@bookmark.topic), class: "btn btn-info" %>
+<!-- Brittany: Couldn't this be removed altogether since there aren't show pages for individual bookmarks? -->
