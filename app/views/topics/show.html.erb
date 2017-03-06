@@ -3,8 +3,8 @@
 <%= link_to "Return to All Topics", topics_path, class: "btn btn-info" %>
   <center>
       <h1><%= @topic.title %></h1>
-      <%= link_to "New Topic", new_topic_path, class: 'btn btn-success btn-sm' %>
-      <%= link_to "Delete Topic", @topic, method: :delete, class: 'btn btn-danger btn-sm', data: { confirm: 'You have requested to delete this topic.
+      <%= link_to "Edit Topic", edit_topic_path, class: 'btn btn-warning' %>
+      <%= link_to "Delete Topic", @topic, method: :delete, class: 'btn btn-danger', data: { confirm: 'You have requested to delete this topic.
         Please click OK to confirm.' } %>
     <!-- </div> -->
   <% end %>

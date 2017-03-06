@@ -5,6 +5,7 @@ class BookmarksController < ApplicationController
   # GET ../bookmarks/1
   def show
     @bookmark = Bookmark.find(params[:id])
+    @like = @bookmark.likes.find(params[:like_id])
   end
 
   # GET ../bookmarks/new
