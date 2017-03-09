@@ -3,9 +3,11 @@ class Bookmark < ApplicationRecord
   belongs_to :user
   has_many :likes, dependent: :destroy
 
-  before_save :format_url
+  # before_save :format_url
 
+  validates :user, presence: true
   validates :url, presence: true
+  validates :topic, presence: true
 
  private
 

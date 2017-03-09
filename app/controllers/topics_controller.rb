@@ -1,5 +1,5 @@
 class TopicsController < ApplicationController
-  before_action :authenticate_user!
+  # before_action :authenticate_user!, except: [:index, :show]
   rescue_from Pundit::NotAuthorizedError, with: :user_not_authorized
 
   # GET ../topics

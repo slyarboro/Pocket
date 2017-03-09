@@ -1,7 +1,7 @@
 module UsersHelper
 end
 
-# 
+#
 # User Story--
 # - sign up for account, user name, password, email
 # - sign in and out

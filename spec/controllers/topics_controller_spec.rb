@@ -86,39 +86,4 @@ RSpec.describe TopicsController, type: :controller do
       end
     end
   end
-
-  context "non-user" do
-    before do
-      @user = FactoryGirl.create(:user)
-      @topic = FactoryGirl.create(:topic)
-    end
-
-    describe "GET #index" do
-      it "redirects to sign in" do
-        get :index
-        expect(response).to redirect_to(new_user_session_path)
-      end
-    end
-
-    describe "GET #show" do
-      it "redirects to sign in" do
-        get :show, params: {id: @topic.id}
-        expect(response).to redirect_to(new_user_session_path)
-      end
-    end
-
-    describe "GET #new" do
-      it "redirects to sign in" do
-        get :new
-        expect(response).to redirect_to(new_user_session_path)
-      end
-    end
-
-    describe "GET #edit" do
-      it "redirects to sign in" do
-        get :edit, params: {id: @topic.id}
-        expect(response).to redirect_to(new_user_session_path)
-      end
-    end
-  end
 end

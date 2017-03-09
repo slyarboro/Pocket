@@ -5,7 +5,7 @@ RSpec.describe BookmarksController, type: :controller do
   context "user" do
     before do
       @user = FactoryGirl.create(:user)
-      sign_in :user, @user
+      sign_in @user
       @topic = FactoryGirl.create(:topic)
       @bookmark = FactoryGirl.create(:bookmark, user_id: @user.id)
     end
@@ -18,18 +18,24 @@ RSpec.describe BookmarksController, type: :controller do
     end
 
     describe "GET #edit" do
-      it "returns http success" do
+      it "returns http redirect" do
         get :edit, topic_id: @topic.id, id: @bookmark.id
         expect(response).to have_http_status(:success)
       end
     end
 
+    describe "POST #create" do
+      it "creates new bookmark for corresponding topic" do
+        expect{post :create, topic_id: @topic.id, user_id: @user.id, bookmark: { url: Faker::Internet.url }}.to change(Bookmark,:count).by(1)
+      end
+    end
+
     describe "PUT update" do
       it "returns the correct title" do
-        new_bookmark = "Bookmarky Mark"
-        put :update, topic_id: @topic.id, id: @bookmark.id, user_id: @user.id, bookmark: {url: new_bookmark }
+        new_bookmark = "Bookmark has been updated"
+        put :update, topic_id: @topic.id, id: @bookmark.id, user_id: @user.id, bookmark: { url: new_bookmark }
         updated_bookmark = assigns(:bookmark)
-        expect(updated_bookmark.url).to eq("http://Bookmarky Mark")
+        expect(updated_bookmark.url).to eq(new_bookmark)
       end
     end
 
