@@ -1,5 +1,27 @@
 <%= content_tag :tr, class: "media", id: "bookmark-#{bookmark.url}" do %>
-  <td><%= link_to bookmark.url %></td>
-  <td><%= link_to "Edit Bookmark", edit_topic_bookmark_path(bookmark.topic, bookmark), class: 'btn btn-success' %>
-  <%= link_to "Delete Bookmark", [bookmark.topic, bookmark], method: :delete, class: 'btn btn-danger', data: { confirm: 'Delete this bookmark?' } %></td>
 <% end %>
+
+<td>
+  <% if policy(bookmark).edit? %>
+  <%= link_to edit_topic_bookmark_path(bookmark.topic, bookmark) do %>
+    <span style = "font-size: 12pt"></span>
+    <span class = "glyphicon glyphicon-pencil"></span>
+  <% end %>
+  <% end %>
+
+&nbsp;
+&nbsp;
+
+  <% if policy(bookmark).destroy? %>
+  <%= link_to [bookmark.topic, bookmark], method: :delete, data: { confirm: 'Delete this bookmark?' } do %>
+    <span style = "font-size: 12pt"></span>
+    <span class = "glyphicon glyphicon-trash"></span>
+<% end %>
+<% end %>
+</td>
+
+<td><%= link_to bookmark.url %></td>
+
+<td>
+  <%= render partial: 'likes/like', locals: { bookmark: bookmark } %>
+</td>
