@@ -73,15 +73,39 @@ RSpec.describe TopicsController, type: :controller do
     describe "PUT update" do
       it "returns updated title" do
         new_title = Faker::Team.creature
-        put :update, params: { id: @topic.id, topic: { title: new_title } }
+        put :update, params: { id: @topic.id, topic: { title: new_title }}
         updated_topic = assigns(:topic)
         expect(updated_topic.id).to eq @topic.id
-        expect(updated_topic.title).to eq new_title
+        expect(updated_topic.title).to eq(@topic.title)
       end
 
       it "redirects user to updated topic" do
         new_title = Faker::Team.creature
-        put :update, params: { id: @topic.id, topic: { title: new_title } }
+        put :update, params: { id: @topic.id, topic: { title: new_title }}
+        expect(response).to redirect_to @topic
+      end
+    end
+
+    describe "POST create" do
+      it "increases the number of topics by 1" do
+        expect{ post :create, { topic: { title: Faker::Team.creature }}}.to change(Topic,:count).by(1)
+      end
+
+      it "redirect to the new topic" do
+        post :create, {topic: {title: Faker::Team.creature}}
+        expect(response).to redirect_to Topic.last
+      end
+    end
+
+    describe "DELETE destroy" do
+      it "deletes the topic" do
+        delete :destroy, {id: @topic.id }
+        count = Topic.where({id: @topic.id}).size
+        expect(count).to eq 0
+      end
+
+      it "redirects to topics index" do
+        delete :destroy, {id: @topic.id}
         expect(response).to redirect_to @topic
       end
     end

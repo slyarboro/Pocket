@@ -2,33 +2,32 @@ class TopicsController < ApplicationController
   # before_action :authenticate_user!, except: [:index, :show]
   rescue_from Pundit::NotAuthorizedError, with: :user_not_authorized
 
-  # GET ../topics
   def index
     @topics = Topic.all
+    # authorize @topics
   end
 
-  # GET ../topics/1
   def show
     @topic = Topic.find(params[:id])
     @bookmarks = @topic.bookmarks
+    authorize @topic
   end
 
-  # GET ../topics/new
   def new
     @topic = Topic.new
+    @topic.user = current_user
+    authorize @topic
   end
 
-  # GET ../topics/1/edit
   def edit
     @topic = Topic.find(params[:id])
-        authorize @topic
-
+    authorize @topic
   end
 
-  # POST ../topics
   def create
     @user = current_user
-    @topic = current_user.topics.new(topic_params)
+    @topic = current_user.topics.build(topic_params)
+    authorize @topic
 
     if @topic.save
       flash[:notice] = "Success! Your topic has been created."
@@ -39,11 +38,10 @@ class TopicsController < ApplicationController
     end
   end
 
-  # PATCH(PUT) ../topics/1
   def update
     @topic = Topic.find(params[:id])
-    @topic.update_attributes(topic_params)
-
+  #   @topic.update_attributes(topic_params)
+  #
     if @topic.save
       flash[:notice] = "Money! Pocket change complete."
       redirect_to @topic
@@ -52,9 +50,7 @@ class TopicsController < ApplicationController
       render :edit
     end
   end
-  #
 
-  # DELETE ../topics/1
   def destroy
     @user = current_user
     @topic = Topic.find(params[:id])
@@ -62,10 +58,10 @@ class TopicsController < ApplicationController
 
     if @topic.destroy
       flash[:notice] = "\"#{@topic.title}\", who? This topic has been deleted."
-      redirect_to topics_url
+      redirect_to topics_path
     else
       flash.now[:error] = "Dang it, there's been an error. Resubmit your request to delete this topic."
-      redirect_to :back
+      render :show
     end
   end
 
