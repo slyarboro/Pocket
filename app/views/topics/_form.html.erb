@@ -6,10 +6,10 @@
       <li>Gene Kranz.</li>
       <li>Gene Cernan.</li>
     </ul>
+    <br><br />
     <%= form_for @topic do |f| %>
     <div class="form-group">
-      <%= f.label :title %>
-      <%= f.text_field :title, class: 'form-control', placeholder: "New Topic Title" %>
+      <%= f.text_field :title, class: 'form-control', placeholder: "Go ahead, give this bad boy a title" %>
     </div>
     <div class="form-group">
       <%= f.submit "Save", class: 'btn btn-success' %>

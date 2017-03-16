@@ -2,8 +2,8 @@
   <div class="col-md-8">
     <%= form_for [@topic, @bookmark] do |f| %>
     <div class="form-group"><br />
-      <%= f.label :copy_and_paste_web_addresses_to_prevent_broken_links! %>
-      <%= f.text_field :url, class: 'form-control', placeholder: "Enter site URL to bookmark the page" %>
+      <%= f.label :copy_and_paste_directly_from_the_address_field_to_prevent_a_broken_bookmark! %>
+      <%= f.text_field :url, class: 'form-control', placeholder: "https://pocketfullofcelery.com/bookmark" %>
     </div>
     <div class="form-group">
       <%= f.submit "Save", class: 'btn btn-success' %>

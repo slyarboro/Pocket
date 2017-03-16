@@ -1,12 +1,7 @@
-<div class="container">
+<br>
   <div class="row">
-    <h1>Welcome to Pocket</h1>
-    <div class="col-md-8">
-      <h5>This seams to be the home page for Pocket.</h5>
-      <br>
-      <div class="posts">Shock it like Billie Jean. Mock it like Jean Girard.</div>
-      <div class="posts">Block it like Jean Béliveau. Knock it like Jean Pascal.</div>
-      <div class="posts">Sock it like Jean-Claude Van <i>Damme, son.</i></div>
+    <br>
+
       <!-- <br>
       <% if user_signed_in? %>
       <%= link_to "Edit Profile", edit_user_registration_path, class: "btn btn-info" %>
@@ -28,18 +23,29 @@
 
 <div class="container">
    <div class="jumbotron">
-     <h1 class="text-center">Blocmarks:</h1>
-     <p class="text-center">Social Bookmarking With Email Integration</p>
-     <p class="text-center">
+     <p class="text-center">G R E E T I N G S</p>
+     <h1 class="text-center">It's Pocket, y'all.</h1>
+     <br><p class="text-center">
        <% if user_signed_in? %>
-         <%= link_to "Edit Profile", edit_user_registration_path, class: 'btn btn-info btn-lg' %>
+         <%= link_to "Edit Profile", edit_user_registration_path, class: 'btn btn-info' %>
          <!-- <%= link_to "Sign Out", destroy_user_session_path, class: 'btn btn-info btn-lg' %> -->
-         <%= link_to "Sign Out", destroy_user_session_path, method: :delete, class: 'btn btn-info btn-lg' %>
+         <%= link_to "Sign Out", destroy_user_session_path, method: :delete, class: 'btn btn-info' %>
 
        <% else %>
          <%= link_to "Sign Up", new_user_registration_path, class: "btn btn-info btn-lg" %>
          <%= link_to "Sign In", new_user_session_path, class: 'btn btn-info btn-lg' %>
        <% end %>
      </p>
+   </div>
+ </div>
+
+ <div class="container">
+   <div class="col-md-12">
+       <h5>This seams to be the home page for Pocket.</h5>
+       Shock it like Billie Jean. Mock it like Jean Girard.<br />
+       Block it like Jean Béliveau. Knock it like Jean Pascal.<br />
+       Sock it like Jean-Claude Van <i>Damme, son.</i><br />
+       I mean, or don't. It's whatever, really.
+     <h5>Make it yours.</h5>
    </div>
  </div>

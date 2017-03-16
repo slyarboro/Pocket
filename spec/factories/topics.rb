@@ -1,7 +1,7 @@
 FactoryGirl.define do
 
   factory :topic do
-    title "MyString"
+    title { Faker::Team.creature }
     user
   end
 end
