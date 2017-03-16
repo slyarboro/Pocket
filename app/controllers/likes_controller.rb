@@ -9,7 +9,7 @@ class LikesController < ApplicationController
      if @like.save
        flash[:notice] = "It's dope, no doubt. Check this bookmark out."
      else
-       flash[:error] = "There's Like, an error"
+       flash[:alert] = "There's Like, an error"
      end
      redirect_to [@bookmark.topic]
   end
@@ -21,7 +21,7 @@ class LikesController < ApplicationController
      if @like.destroy
        flash[:notice] = "Likers gonna like. This bookmark is a'ight."
      else
-       flash[:error].should == "Unlike error"
+       flash[:alert].should == "Unlike error"
      end
      redirect_to [@bookmark.topic]
    end

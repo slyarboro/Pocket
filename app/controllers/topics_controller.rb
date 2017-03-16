@@ -33,7 +33,7 @@ class TopicsController < ApplicationController
       flash[:notice] = "Success! Your topic has been created."
       redirect_to @topic
     else
-      flash.now[:error] = "Oh snap, your request has failed. Please try again!"
+      flash.now[:alert] = "Oh snap, your request has failed. Please try again!"
       render :new
     end
   end
@@ -46,7 +46,7 @@ class TopicsController < ApplicationController
       flash[:notice] = "Money! Pocket change complete."
       redirect_to @topic
     else
-      flash.now[:error] = "There was an error saving your changes. Please resubmit your request."
+      flash.now[:alert] = "There was an error saving your changes. Please resubmit your request."
       render :edit
     end
   end
@@ -60,7 +60,7 @@ class TopicsController < ApplicationController
       flash[:notice] = "\"#{@topic.title}\", who? This topic has been deleted."
       redirect_to topics_path
     else
-      flash.now[:error] = "Dang it, there's been an error. Resubmit your request to delete this topic."
+      flash.now[:alert] = "Dang it, there's been an error. Resubmit your request to delete this topic."
       render :show
     end
   end

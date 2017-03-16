@@ -8,10 +8,11 @@
            <tbody>
              <tr class='js-items'>
                <br />
+               <% @user_bookmarks.each do |topic, bookmarks| %>
                  <% bookmarks.each do |bookmark| %>
-                 <br />
                    <%= render partial: 'bookmarks/bookmark', locals: { bookmark: bookmark } %>
                  <% end %>
+                <% end %>
              </tr>
            </tbody>
          </table>
@@ -40,3 +41,5 @@
      </div>
    </div>
  </div>
+
+ <%= link_to "New Topic", new_topic_path, class: 'btn btn-success' %>

@@ -15,7 +15,7 @@ RSpec.describe TopicsController, type: :controller do
         expect(response).to have_http_status(:success)
       end
 
-      it "assigns topics to Topic index" do
+      it "assigns all topics per Topic index" do
         get :index
         expect(assigns(:topics)).to eq([@topic])
       end
@@ -32,7 +32,7 @@ RSpec.describe TopicsController, type: :controller do
         expect(response).to render_template :show
       end
 
-      it "assigns topic to Topic index" do
+      it "assigns topic(x) per Topic index" do
         get :show, params: {id: @topic.id}
         expect(assigns(:topic)).to eq(@topic)
       end
@@ -56,22 +56,21 @@ RSpec.describe TopicsController, type: :controller do
         expect(response).to have_http_status(:success)
       end
 
-      it "renders edit view" do
+      it "renders #edit view" do
         get :edit, params: {id: @topic.id}
         expect(response).to render_template :edit
       end
 
-      it "assigns topic to be updated to @topic" do
+      it "assigns topic(x) per Topic index" do
         get :edit, params: {id: @topic.id}
         topic_instance = assigns(:topic)
-
         expect(topic_instance.id).to eq(@topic.id)
         expect(topic_instance.title).to eq(@topic.title)
       end
     end
 
     describe "PUT update" do
-      it "returns updated title" do
+      it "updates topic(x) attributes" do
         new_title = Faker::Team.creature
         put :update, params: { id: @topic.id, topic: { title: new_title }}
         updated_topic = assigns(:topic)
@@ -79,7 +78,7 @@ RSpec.describe TopicsController, type: :controller do
         expect(updated_topic.title).to eq(@topic.title)
       end
 
-      it "redirects user to updated topic" do
+      it "redirects to updated topic(x)" do
         new_title = Faker::Team.creature
         put :update, params: { id: @topic.id, topic: { title: new_title }}
         expect(response).to redirect_to @topic
@@ -87,26 +86,26 @@ RSpec.describe TopicsController, type: :controller do
     end
 
     describe "POST create" do
-      it "increases the number of topics by 1" do
+      it "creates unique topic per Topic index" do
         expect{ post :create, { topic: { title: Faker::Team.creature }}}.to change(Topic,:count).by(1)
       end
 
-      it "redirect to the new topic" do
+      it "redirects to unique topic" do
         post :create, {topic: {title: Faker::Team.creature}}
         expect(response).to redirect_to Topic.last
       end
     end
 
     describe "DELETE destroy" do
-      it "deletes the topic" do
+      it "deletes topic(x) per Topic index" do
         delete :destroy, {id: @topic.id }
         count = Topic.where({id: @topic.id}).size
         expect(count).to eq 0
       end
 
-      it "redirects to topics index" do
+      it "redirects to Topic index view" do
         delete :destroy, {id: @topic.id}
-        expect(response).to redirect_to @topic
+        expect(response).to redirect_to(topics_url)
       end
     end
   end
